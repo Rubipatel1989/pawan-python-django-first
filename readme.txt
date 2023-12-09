@@ -8,3 +8,4 @@
 8. after that come in directory then run python manage.py runserver
 9. python manage.py startapp base
 10. Start Server -> python manage.py runserver
+11. Migrate -> python manage.py migrate
