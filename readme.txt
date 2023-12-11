@@ -9,3 +9,7 @@
 9. python manage.py startapp base
 10. Start Server -> python manage.py runserver
 11. Migrate -> python manage.py migrate
+12. python manage.py makemigrations
+13. python manage.py createsuperuser      pawan Bsa@123456
+
+1:34:43
