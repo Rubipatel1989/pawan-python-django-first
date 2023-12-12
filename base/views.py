@@ -1,24 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Room
-
-# rooms = [
-#     {
-#         "id":1,
-#         "name": "Pawan Kumar",
-#         "age":32
-#     },
-#     {
-#         "id":2,
-#         "name": "Manoj Kumar",
-#         "age":32
-#     },
-#     {
-#         "id":3,
-#         "name": "Rahul Kumar",
-#         "age":32
-#     }
-# ]
+from .forms import RoomForm
 
 def home(request):
     rooms = Room.objects.all()
@@ -27,9 +10,18 @@ def home(request):
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    # for i in rooms:
-    #     if i['id'] == int(pk):
-    #         room = i
     context = {'room': room}
-
     return render(request, 'base/room.html', context)
+
+def createRoom(request):
+    form = RoomForm()
+    
+    if request.method == 'POST':
+       form = RoomForm(request.POST)
+       if form.is_valid():
+            form.save()
+            return redirect('home')
+        
+
+    context = {'form': form}
+    return render(request, 'base/room_form.html',context)
