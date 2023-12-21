@@ -2,9 +2,8 @@
 <h1>Home Template</h1>
 
 {% block content %}
-
-<div>
-    
+{% if page == 'login' %}
+<div>    
     <form method="POST" action="">
         {% csrf_token %}
         <label>Username:</label>
@@ -14,7 +13,20 @@
         
         <input type="submit" value="Login" placeholder="Enter Username">
     </form>
+    <p>have not signed yet ?</p>
+    <a href="{% url 'register' %}">Signup</a>
 </div>
-
+{% else %}
+<div>    
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <input type="submit" value="Register" placeholder="Enter Username">
+    </form>
+    <p>Already Signup ?</p>
+    <a href="{% url 'login' %}">Login</a>
+</div>
+{% endif %}
 
 {% endblock content %}
