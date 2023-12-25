@@ -12,4 +12,4 @@
 12. python manage.py makemigrations
 13. python manage.py createsuperuser      pawan Bsa@123456
 
-3:52:22
+4:04:04
